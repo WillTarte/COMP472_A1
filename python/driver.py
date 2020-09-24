@@ -9,16 +9,17 @@ def main():
     upperCaseLettersInfo = 'info_1.csv'
     greekLettersInfo = 'info_2.csv'
 
-
     
     upperCaseLettersDict = utils.getInfo(upperCaseLettersInfo)
     greekLettersInfo = utils.getInfo(greekLettersInfo)
+    print('\nUppercase Letters Dict:')
     print(upperCaseLettersDict)
+    print('\nGreek Letters Dict')
     print(greekLettersInfo)
 
     
 
-    # print(baseDT.generateBaseDT())
+    print(baseDT.generateBaseDT())
 
     # labels = ['G1', 'G2', 'G3', 'G4', 'G5']
     # men_means = [20, 35, 30, 35, 27]
