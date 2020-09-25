@@ -20,8 +20,9 @@ def getData(fileName):
     return data
 
 
-def writeResults():
-    print('Writing Results')
+def writeResults(results, fileName):
+    pd.DataFrame(results).to_csv('./results/' + fileName, header=None)
+    print('Results Written to ' + fileName)
 
 
 def generateGraph():

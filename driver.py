@@ -10,11 +10,17 @@ def main():
     trainingData1File = 'train_1.csv'
     trainingData2File = 'train_2.csv'
 
+    val1File = 'val_1.csv'
+    val2File = 'val_2.csv'
+
     testWithLabel1File = 'test_with_label_1.csv'
     testWithLabel2File = 'test_with_label_2.csv'
 
-    val1File = 'val_1.csv'
-    val2File = 'val_2.csv'
+    baseDTFile1 = 'Base-DT-DS1.csv'
+    baseDTFile2 = 'Base-DT-DS2.csv'
+
+    bestDTFile1 = 'Best-DT-DS1.csv'
+    bestDTFile2 = 'Best-DT-DS2.csv'
 
     upperCaseLettersDict = utils.getInfo(upperCaseLettersInfoFile)
     greekLettersInfo = utils.getInfo(greekLettersInfoFile)
@@ -33,25 +39,29 @@ def main():
     testWithLabel1 = utils.getData(testWithLabel1File)
     testWithLabel2 = utils.getData(testWithLabel2File)
 
-
     print('Running Validation for Base DT - Upper Case Letters...')
     decisionTree.testModel(baseDTUpperCase, val1Data)
     print('Running Validation for Best DT - Upper Case Letters...')
     decisionTree.testModel(bestDTUpperCase, val1Data)
 
     print('\nRunning Tests for Base DT - Upper Case Letters...')
-    decisionTree.testModel(baseDTUpperCase, testWithLabel1)
+    baseDTRes1 = decisionTree.testModel(baseDTUpperCase, testWithLabel1)
+    utils.writeResults(baseDTRes1, baseDTFile1)
     print('Running Tests for Best DT - Upper Case Letters...')
-    decisionTree.testModel(bestDTUpperCase, testWithLabel1)
+    bestDTRes1 = decisionTree.testModel(bestDTUpperCase, testWithLabel1)
+    utils.writeResults(bestDTRes1, bestDTFile1)
     
     print('\nRunning Validation for Base DT - Greek Letters...')
     decisionTree.testModel(baseDTGreek, val2Data)
     print('Running Validation for Best DT - Greek Letters...')
     decisionTree.testModel(bestDTGreek, val2Data)
+    
     print('\nRunning Tests for Base DT - Greek Letters...')
-    decisionTree.testModel(baseDTGreek, testWithLabel2)
+    baseDTRes2 = decisionTree.testModel(baseDTGreek, testWithLabel2)
+    utils.writeResults(baseDTRes2, baseDTFile2)
     print('Running Tests for Best DT - Greek Letters...')
-    decisionTree.testModel(bestDTGreek, testWithLabel2)
+    bestDTRes2 = decisionTree.testModel(bestDTGreek, testWithLabel2)
+    utils.writeResults(bestDTRes2, bestDTFile2)
     
 
 if __name__ == "__main__":

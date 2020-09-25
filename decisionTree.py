@@ -14,7 +14,7 @@ def generateBaseDT(trainingData):
 def generateBestDT(trainingData):
     inputs = trainingData.iloc[:, :-1]
     values = trainingData.iloc[:, -1]
-    clf = DecisionTreeClassifier(criterion='gini', max_depth=None, min_samples_split=4, min_impurity_decrease=0.0, class_weight='balanced')
+    clf = DecisionTreeClassifier(criterion='gini', max_depth=None, min_samples_split=5, min_impurity_decrease=0.0, class_weight='balanced')
     clf = clf.fit(inputs, values)
     return clf
 
@@ -24,4 +24,5 @@ def testModel(clf, testWithLabel):
     predictions = clf.predict(inputs)
     scores = clf.score(inputs, values)
     print("Prediction Scores: " + str(scores * 100) + "%")
-    return scores
+
+    return predictions
