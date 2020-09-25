@@ -1,45 +1,38 @@
 import utils
 import baseDT
 import matplotlib.pyplot as plt
-
+from sklearn import tree
 
 def main():
     """ Driver.py """
-    
-    upperCaseLettersInfo = 'info_1.csv'
-    greekLettersInfo = 'info_2.csv'
+    upperCaseLettersInfoFile = 'info_1.csv'
+    greekLettersInfoFile = 'info_2.csv'
+    trainingData1File = 'train_1.csv'
+    trainingData2File = 'train_2.csv'
 
-    
-    upperCaseLettersDict = utils.getInfo(upperCaseLettersInfo)
-    greekLettersInfo = utils.getInfo(greekLettersInfo)
+    testWithLabel1File = 'test_with_label_1.csv'
+    testWithLabel2File = 'test_with_label_2.csv'
+
+    upperCaseLettersDict = utils.getInfo(upperCaseLettersInfoFile)
+    greekLettersInfo = utils.getInfo(greekLettersInfoFile)
     print('\nUppercase Letters Dict:')
     print(upperCaseLettersDict)
-    print('\nGreek Letters Dict')
+    print('\nGreek Letters Dict:')
     print(greekLettersInfo)
 
+    #Get data uses Pandas library. Returns 2d array with column headers in first row
+    trainingData1 = utils.getData(trainingData1File)
+    trainingData2 = utils.getData(trainingData2File)
+    #Generating our ML Models
+    baseDTUpperCase = baseDT.generateBaseDT(trainingData1)
+    baseDTGreek = baseDT.generateBaseDT(trainingData2)
+    #We dont need to do use validation dataset on default. Because we don't need to tune parameters
+    testWithLabel1 = utils.getData(testWithLabel1File)
+    testWithLabel2 = utils.getData(testWithLabel2File)
     
-
-    print(baseDT.generateBaseDT())
-
-    # labels = ['G1', 'G2', 'G3', 'G4', 'G5']
-    # men_means = [20, 35, 30, 35, 27]
-    # women_means = [25, 32, 34, 20, 25]
-    # men_std = [2, 3, 4, 1, 2]
-    # women_std = [3, 5, 2, 3, 3]
-    # width = 0.35       # the width of the bars: can also be len(x) sequence
-
-    # fig, ax = plt.subplots()
-
-    # ax.bar(labels, men_means, width, yerr=men_std, label='Men')
-    # ax.bar(labels, women_means, width, yerr=women_std, bottom=men_means,
-    #     label='Women')
-
-    # ax.set_ylabel('Scores')
-    # ax.set_title('Scores by group and gender')
-    # ax.legend()
-
-    # plt.show()
-
+    baseDT.testModel(baseDTUpperCase, testWithLabel1)
+    baseDT.testModel(baseDTGreek, testWithLabel2)
+    
 
 if __name__ == "__main__":
     main()

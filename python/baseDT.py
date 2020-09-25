@@ -1,8 +1,25 @@
-def generateBaseDT():
-    print("Generating Base DT")
-    return "lol"
+from sklearn.tree import DecisionTreeClassifier
 
+def generateBaseDT(trainingData):
+    print("Generating Base DT...")
+    #We are getting every column except the last one (features)
+    inputs = trainingData.iloc[:, :-1]
 
-def generateBestDT():
-    print("Generating Best DT")
-    return "lol2"
+    #We are getting the last column (predicted value)
+    values = trainingData.iloc[:, -1]
+
+    clf = DecisionTreeClassifier(criterion='entropy')
+    clf = clf.fit(inputs, values)
+    print('Base DT Generated and Trained')
+    return clf
+
+def testModel(clf, testWithLabel):
+    inputs = testWithLabel.iloc[:, :-1]
+    values = testWithLabel.iloc[:, -1] 
+    predictions = clf.predict(inputs)
+    scores = clf.score(inputs, values)
+    print("Prediction Scores: " + str(scores * 100) + "%")
+    return scores
+
+def writeResultToFile():
+    return
