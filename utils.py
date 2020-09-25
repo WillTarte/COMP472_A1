@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 def getInfo(fileName):
-    datasetDirectory = '../dataset/'
+    datasetDirectory = './dataset/'
     datasetFullName = datasetDirectory + fileName;
     data = np.genfromtxt(datasetFullName, delimiter=',', dtype=None, encoding=None)
     #Now we are going to store the values in a keypair value
@@ -14,7 +14,7 @@ def getInfo(fileName):
     return infoDictionary
 
 def getData(fileName):
-    datasetDirectory = '../dataset/'
+    datasetDirectory = './dataset/'
     datasetFullName = datasetDirectory + fileName
     data = pd.read_csv(datasetFullName, header=None)
     return data
