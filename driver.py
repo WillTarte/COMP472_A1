@@ -18,10 +18,6 @@ def main():
 
     upperCaseLettersDict = utils.getInfo(upperCaseLettersInfoFile)
     greekLettersInfo = utils.getInfo(greekLettersInfoFile)
-    # print('\nUppercase Letters Dict:')
-    # print(upperCaseLettersDict)
-    # print('\nGreek Letters Dict:')
-    # print(greekLettersInfo)
 
     #Get data uses Pandas library. Returns 2d array with column headers in first row
     trainingData1 = utils.getData(trainingData1File)

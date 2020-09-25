@@ -6,7 +6,7 @@ def generateBaseDT(trainingData):
     inputs = trainingData.iloc[:, :-1]
     #We are getting the last column (predicted value)
     values = trainingData.iloc[:, -1]
-    clf = DecisionTreeClassifier('criterion'='entropy')
+    clf = DecisionTreeClassifier(criterion='entropy')
     clf = clf.fit(inputs, values)
     # print('Base DT Generated and Trained\n')
     return clf
