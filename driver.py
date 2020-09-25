@@ -22,6 +22,7 @@ def main():
     bestDTFile1 = 'Best-DT-DS1.csv'
     bestDTFile2 = 'Best-DT-DS2.csv'
 
+
     upperCaseLettersDict = utils.getInfo(upperCaseLettersInfoFile)
     greekLettersInfo = utils.getInfo(greekLettersInfoFile)
 
@@ -39,29 +40,32 @@ def main():
     testWithLabel1 = utils.getData(testWithLabel1File)
     testWithLabel2 = utils.getData(testWithLabel2File)
 
-    print('Running Validation for Base DT - Upper Case Letters...')
-    decisionTree.testModel(baseDTUpperCase, val1Data)
-    print('Running Validation for Best DT - Upper Case Letters...')
-    decisionTree.testModel(bestDTUpperCase, val1Data)
+    # print('Running Validation for Base DT - Upper Case Letters...')
+    # decisionTree.testModel(baseDTUpperCase, val1Data)
+    # print('Running Validation for Best DT - Upper Case Letters...')
+    # decisionTree.testModel(bestDTUpperCase, val1Data)
 
-    print('\nRunning Tests for Base DT - Upper Case Letters...')
-    baseDTRes1 = decisionTree.testModel(baseDTUpperCase, testWithLabel1)
-    utils.writeResults(baseDTRes1, baseDTFile1)
-    print('Running Tests for Best DT - Upper Case Letters...')
-    bestDTRes1 = decisionTree.testModel(bestDTUpperCase, testWithLabel1)
-    utils.writeResults(bestDTRes1, bestDTFile1)
+    # print('\nRunning Tests for Base DT - Upper Case Letters...')
+    # baseDTRes1 = decisionTree.testModel(baseDTUpperCase, testWithLabel1)
+    # utils.writeResults(baseDTRes1, baseDTFile1)
+    # print('Running Tests for Best DT - Upper Case Letters...')
+    # bestDTRes1 = decisionTree.testModel(bestDTUpperCase, testWithLabel1)
+    # utils.writeResults(bestDTRes1, bestDTFile1)
     
-    print('\nRunning Validation for Base DT - Greek Letters...')
-    decisionTree.testModel(baseDTGreek, val2Data)
-    print('Running Validation for Best DT - Greek Letters...')
-    decisionTree.testModel(bestDTGreek, val2Data)
+    # print('\nRunning Validation for Base DT - Greek Letters...')
+    # decisionTree.testModel(baseDTGreek, val2Data)
+    # print('Running Validation for Best DT - Greek Letters...')
+    # decisionTree.testModel(bestDTGreek, val2Data)
     
-    print('\nRunning Tests for Base DT - Greek Letters...')
-    baseDTRes2 = decisionTree.testModel(baseDTGreek, testWithLabel2)
-    utils.writeResults(baseDTRes2, baseDTFile2)
-    print('Running Tests for Best DT - Greek Letters...')
-    bestDTRes2 = decisionTree.testModel(bestDTGreek, testWithLabel2)
-    utils.writeResults(bestDTRes2, bestDTFile2)
+    # print('\nRunning Tests for Base DT - Greek Letters...')
+    # baseDTRes2 = decisionTree.testModel(baseDTGreek, testWithLabel2)
+    # utils.writeResults(baseDTRes2, baseDTFile2)
+    # print('Running Tests for Best DT - Greek Letters...')
+    # bestDTRes2 = decisionTree.testModel(bestDTGreek, testWithLabel2)
+    # utils.writeResults(bestDTRes2, bestDTFile2)
+
+    
+    # utils.plotInstances(trainingData1, upperCaseLettersDict)
     
 
 if __name__ == "__main__":

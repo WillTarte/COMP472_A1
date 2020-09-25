@@ -1,5 +1,24 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+import collections
+
+
+def plotInstances(trainingData, infoMapping):
+    values = trainingData.iloc[:, -1]
+    valueCounts = values.value_counts().to_dict()
+
+    histoDict = {}
+
+    for key, value in valueCounts.items():
+        histoDict[infoMapping[key]] = value
+    od = collections.OrderedDict(sorted(histoDict.items()))
+    names = list(od.keys())
+    values = list(od.values())
+    plt.title('Class Instances', fontsize=10)
+    plt.bar(names, values)
+
+    plt.show()
 
 def getInfo(fileName):
     datasetDirectory = './dataset/'
