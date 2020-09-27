@@ -3,7 +3,7 @@ import pandas as pd
 
 def getInfo(fileName):
     datasetDirectory = './dataset/'
-    datasetFullName = datasetDirectory + fileName;
+    datasetFullName = datasetDirectory + fileName
     data = np.genfromtxt(datasetFullName, delimiter=',', dtype=None, encoding=None)
     #Now we are going to store the values in a keypair value
     #Note that we start at index 1 in order to avoid storing the headers into our dictionary
