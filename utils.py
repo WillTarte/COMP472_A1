@@ -77,7 +77,7 @@ def plotInstances(trainingData, infoMapping, dataSet, dataSetType, fileName):
     add_value_labels(ax)
 
     # plt.show()
-    plt.savefig('./results/' + fileName + '.png')
+    plt.savefig('./results/classInstances/' + fileName + '.png')
 
 def getInfo(fileName):
     datasetDirectory = './dataset/'
