@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 from sklearn.tree import DecisionTreeClassifier
 
 def generateBaseDT(trainingData):
@@ -18,11 +19,3 @@ def generateBestDT(trainingData):
     clf = clf.fit(inputs, values)
     return clf
 
-def testModel(clf, testWithLabel):
-    inputs = testWithLabel.iloc[:, :-1]
-    values = testWithLabel.iloc[:, -1] 
-    predictions = clf.predict(inputs)
-    scores = clf.score(inputs, values)
-    print("Prediction Scores: " + str(scores * 100) + "%")
-
-    return predictions

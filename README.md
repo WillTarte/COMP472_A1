@@ -7,4 +7,8 @@
 #### Dataset 2 contains images of 10 Greek Letters
 
 ### Branches:
-#### aha_A1 - Andrew's Branch, Ranking datasets utilizing Base-DT & Best-DT
+#### aha_A1 - Andrew's Branch, Ranking datasets utilizing Base-DT & Best-DT 
+--- 
+Will: Base-MLP & Best-MLP  
+Andrew: Base-DT & Best-DT  
+Anik: GNB & PER  
