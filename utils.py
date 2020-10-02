@@ -3,13 +3,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import collections
 import math
+from sklearn.metrics import plot_confusion_matrix, classification_report
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, fbeta_score
+import json
 
-def plotInstances(trainingData, infoMapping, dataSet, dataSetType, fileName):
-    """ dataset = Uppercase Letters or Greek Letters,
-        datasetType = Training/Validation/Testing
+def plotInstances(data, infoMapping, dataSet, dataSetType, fileName):
+    """ dataset = 'Uppercase Letters' or 'Greek Letters',
+        datasetType = 'Training'/'Validation'/'Testing'
     """
     print("Plotting")
-    values = trainingData.iloc[:, -1]
+    values = data.iloc[:, -1]
     valueCounts = values.value_counts().to_dict()
 
     histoDict = {}
@@ -78,6 +81,7 @@ def plotInstances(trainingData, infoMapping, dataSet, dataSetType, fileName):
 
     # plt.show()
     plt.savefig('./results/classInstances/' + fileName + '.png')
+    print('Generated Class Instance')
 
 def getInfo(fileName):
     datasetDirectory = './dataset/'
@@ -97,7 +101,39 @@ def getData(fileName):
     data = pd.read_csv(datasetFullName, header=None)
     return data
 
+def testModel(clf, testWithLabel):
+    inputs = testWithLabel.iloc[:, :-1]
+    values = testWithLabel.iloc[:, -1] 
+    predictions = clf.predict(inputs)
+    scores = clf.score(inputs, values)
+    print("Prediction Scores: " + str(scores * 100) + "%")
+    return predictions
+
+    
+def plotConfusionMatrix(clf, data, infoMapping, dataSet, fileName):
+    inputs = data.iloc[:, :-1]
+    values = data.iloc[:, -1]
+    fig, ax = plt.subplots(figsize=(12, 8))
+    predictions = clf.predict(inputs)
+    cm = plot_confusion_matrix(clf, inputs, values, cmap='magma', ax=ax, display_labels=infoMapping.values())
+    plt.title('Confusion Matrix of test results for ' + dataSet)
+    plt.savefig('./results/mlResults/' + fileName + '.png')
+    print('Generated Plot Confusion Matrix')
+
+
+def getClassificationReport(clf, data, infoMapping, dataSet, fileName):
+    inputs = data.iloc[:, :-1]
+    values = data.iloc[:, -1]
+    predictions = clf.predict(inputs)
+    # report = classification_report(values, predictions, target_names=infoMapping.values(), zero_division=1)
+    # print(report)
+    report = classification_report(values, predictions, target_names=infoMapping.values(), output_dict=True, zero_division=1)
+    reportToPD = pd.DataFrame(report).transpose()
+    pdHeaders = ['Class Name', 'Precision', 'Recall', 'F1 SCore', 'Support']
+    pd.DataFrame(reportToPD).to_csv('./results/mlResults/' + fileName + '.csv')
+    print('Generated Classification Report')
 
 def writeMLResults(results, fileName):
     pd.DataFrame(results).to_csv('./results/mlResults/' + fileName, header=None)
     print('Results Written to ' + fileName)
+    
