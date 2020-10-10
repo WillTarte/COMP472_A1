@@ -7,6 +7,7 @@ def main():
     """ Driver.py """
     upperCaseLettersInfoFile = 'info_1.csv'
     greekLettersInfoFile = 'info_2.csv'
+
     trainingData1File = 'train_1.csv'
     trainingData2File = 'train_2.csv'
 
