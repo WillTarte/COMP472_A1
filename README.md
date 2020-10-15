@@ -18,3 +18,5 @@
 Will: Base-MLP & Best-MLP  
 Andrew: Base-DT & Best-DT  
 Anik: GNB & PER
+---
+[Link to Repo](https://github.com/WillTarte/COMP472_A1)
